@@ -1,0 +1,45 @@
+Превью.дБ*
+.DS_Store
+HELP.md
+.gradle
+сборка/
+
+### STS ###
+.apt_generated
+.classpath
+.заводская дорожка
+проект
+.настройки
+.
+.sts4-кэш
+
+### IntelliJ ИДЕЯ ###
+.идея
+*.iws
+*.iml
+*.пис
+вон/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### ПРОТИВ кода ###
+.vscode/
+
+### Файлы пакетов ###
+*.банка
+*.война
+*.нар
+*.ухо
+*.застежка-молния
+*.tar.gz
+*.rar
+
+### Исключения ###
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
