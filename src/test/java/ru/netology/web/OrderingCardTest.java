@@ -41,7 +41,7 @@ public class OrderingCardTest {
         driver.findElement(By.tagName("button")).click();
 
         String expectedText = "  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actualText = driver.findElement(By.tagName("p")).getText();
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
         Assertions.assertEquals(expectedText, actualText);
 
     }
@@ -88,9 +88,21 @@ public class OrderingCardTest {
         driver.findElement(By.name("phone")).sendKeys("+79250987654");
         driver.findElement(By.tagName("button")).click();
 
-        String expectedText = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
-        String actualText = driver.findElement(By.className("checkbox__text")).getText();
+        String expectedText = "rgba(255, 92, 92, 1)";
+        String actualText = driver.findElement(By.cssSelector(".input_invalid")).getCssValue("color");
         Assertions.assertEquals(expectedText, actualText);
+    }
+
+    @Test
+    void itShouldHighlightTheWarningLabelInGentianBlueIfTheCheckboxIsSelected() {
+        driver.findElement(By.name("name")).sendKeys("иван иванов");
+        driver.findElement(By.name("phone")).sendKeys("+79250987654");
+        driver.findElement(By.className("checkbox__box")).click();
+
+        String expectedText = "rgba(11, 31, 53, 0.95)";
+        String actualText = driver.findElement(By.className("checkbox__text")).getCssValue("color");
+        Assertions.assertEquals(expectedText, actualText);
+
     }
 
     @Test
