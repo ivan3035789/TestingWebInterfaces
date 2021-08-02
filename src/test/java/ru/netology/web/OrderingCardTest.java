@@ -17,12 +17,12 @@ public class OrderingCardTest {
 
     @BeforeEach
     public void setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--headless");
 
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.get("http://localhost:9999");
     }
 
@@ -53,7 +53,7 @@ public class OrderingCardTest {
         driver.findElement(By.tagName("button")).click();
 
         String expectedText = "  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actualText = driver.findElement(By.tagName("p")).getText();
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
         Assertions.assertEquals(expectedText, actualText);
 
     }
@@ -88,8 +88,8 @@ public class OrderingCardTest {
         driver.findElement(By.name("phone")).sendKeys("+79250987654");
         driver.findElement(By.tagName("button")).click();
 
-        String expectedText = "rgba(255, 92, 92, 1)";
-        String actualText = driver.findElement(By.cssSelector(".input_invalid")).getCssValue("color");
+        String expectedText = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=agreement].input_invalid .checkbox__text")).getText();
         Assertions.assertEquals(expectedText, actualText);
     }
 
@@ -99,8 +99,8 @@ public class OrderingCardTest {
         driver.findElement(By.name("phone")).sendKeys("+79250987654");
         driver.findElement(By.className("checkbox__box")).click();
 
-        String expectedText = "rgba(11, 31, 53, 0.95)";
-        String actualText = driver.findElement(By.className("checkbox__text")).getCssValue("color");
+        String expectedText = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=agreement] span.checkbox__text")).getText();
         Assertions.assertEquals(expectedText, actualText);
 
     }
